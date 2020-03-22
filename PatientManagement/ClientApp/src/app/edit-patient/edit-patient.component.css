@@ -1,0 +1,44 @@
+.is-invalid {
+    border:solid;
+    border-color: red;
+    border-width: 1px;
+}
+
+.form-control {
+    display: inline-block;
+    max-width: 500px;
+}
+
+label, .label {
+    font-weight: 700;
+    width: 20%;
+    min-width: 150px;
+}
+
+.error {
+    color: red;
+}
+
+.padtop20 {
+    padding-top: 20px;
+}
+
+.padbottom20 {
+  padding-bottom: 20px;
+}
+
+.sm {
+    font-size: 90%;
+}
+
+label.radio {
+  font-weight: 400;
+}
+
+.radio input {
+  margin-right: 5px;
+}
+
+.btn {
+    margin-left:20%;
+}

@@ -1,0 +1,117 @@
+<p *ngIf="!isLoaded"><em>Loading...</em></p>
+<div *ngIf="isLoaded">
+  <h1 id="tableLabel" *ngIf="!id">Add Patient</h1>
+  <h1 id="tableLabel" *ngIf="id">Edit Patient</h1>
+
+  <form [formGroup]="patientForm" (submit)="submit()" class="padtop20">
+    <div class="form-group">
+      <div>
+        <label for="firstName">First Name</label>
+        <input type="text" #firstName id="firstName" maxlength="100" formControlName="firstName"
+               class="form-control" [ngClass]="{'is-invalid': submitted && getControl('lastName').errors }" />
+      </div>
+      <div *ngIf="submitted && getControl('firstName') && getControl('firstName').errors && getControl('firstName').hasError('required')">
+        <p class="error">*  Field is required</p>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="">
+        <label for="lastName">Last Name</label>
+        <input type="text" #lastName id="lastName" maxlength="10" formControlName="lastName" class="form-control"
+               [ngClass]="{'is-invalid': submitted && getControl('lastName').errors }" />
+      </div>
+      <div *ngIf="submitted && getControl('lastName') && getControl('lastName').errors && getControl('lastName').hasError('required')">
+        <p class="error">*  Field is required</p>
+      </div>
+    </div>
+    <div class="form-group">
+      <div>
+        <label for="strDob">DOB <span class="sm">(dd/mm/yyyy)</span></label>
+        <input type="text" #strDob id="strDob" maxlength="100" formControlName="strDob" class="form-control"
+               [ngClass]="{'is-invalid': submitted && getControl('strDob').errors }" />
+      </div>
+      <div *ngIf="submitted && getControl('strDob') && getControl('strDob').errors && getControl('strDob').hasError('required')">
+        <p class="error">*  Field is required</p>
+      </div>
+    </div>
+    <div class="form-group">
+      <div>
+        <label for="streetAddress">Street Address</label>
+        <input type="text" #firstName id="streetAddress" maxlength="250" formControlName="streetAddress"
+               class="form-control" [ngClass]="{'is-invalid': submitted && getControl('streetAddress').errors }" />
+      </div>
+      <div *ngIf="submitted && getControl('streetAddress') && getControl('streetAddress').errors && getControl('streetAddress').hasError('required')">
+        <p class="error">* Field is required</p>
+      </div>
+    </div>
+    <div class="form-group">
+      <div>
+        <label for="suburb">Suburb</label>
+        <input type="text" #firstName id="suburb" maxlength="100" formControlName="suburb"
+               class="form-control" [ngClass]="{'is-invalid': submitted && getControl('suburb').errors }" />
+      </div>
+      <div *ngIf="submitted && getControl('suburb') && getControl('suburb').errors && getControl('suburb').hasError('required')">
+        <p class="error">* Field is required</p>
+      </div>
+    </div>
+    <div class="form-group">
+      <div>
+        <label for="postCode">Post Code</label>
+        <input type="text" #firstName id="postCode" maxlength="4" formControlName="postCode"
+               class="form-control" [ngClass]="{'is-invalid': submitted && getControl('postCode').errors }" />
+      </div>
+      <div *ngIf="submitted && getControl('postCode') && getControl('postCode').errors && getControl('postCode').hasError('required')">
+        <p class="error">* Field is required</p>
+      </div>
+    </div>
+    <div class="form-group">
+      <div>
+        <label for="stateId">State</label>
+        <select #stateId id="stateId" formControlName="stateId" class="form-control"
+                [ngClass]="{'is-invalid': submitted && getControl('stateId').errors }">
+          <option *ngFor="let state of states" [value]="state.id">{{state.name}}</option>
+        </select>
+      </div>
+      <div *ngIf="submitted && getControl('stateId') && getControl('stateId').errors && getControl('stateId').hasError('required')">
+        <p class="error">* Field is required</p>
+      </div>
+    </div>
+    <div class="form-group">
+      <div>
+        <label for="email">Email</label>
+        <input type="text" #email id="email" maxlength="50" formControlName="email" class="form-control"
+               [ngClass]="{'is-invalid': submitted && getControl('email').errors }" />
+      </div>
+      <div *ngIf="submitted && getControl('email') && getControl('email').errors && getControl('email').hasError('required')">
+        <p class="error">* Field is required</p>
+      </div>
+    </div>
+    <div class="form-group">
+      <div>
+        <label for="phone">Phone</label>
+        <input type="text" #phone id="phone" maxlength="20" formControlName="phone" class="form-control"
+               [ngClass]="{'is-invalid': submitted && getControl('phone').errors }" />
+      </div>
+      <div *ngIf="submitted && getControl('phone') && getControl('phone').errors && getControl('phone').hasError('required')">
+        <p class="error">* Field is required</p>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="radio">
+        <label for="gender">Gender</label>
+        <!--<input type="text" #email id="gender" maxlength="10" formControlName="gender" />-->
+        <label class="radio" *ngFor="let gender of genders" [ngClass]="{'is-invalid': submitted && getControl('gender').errors }">
+          <input   type="radio" [value]="gender"
+                 formControlName="gender" >{{gender}}
+        </label>
+      </div>
+      <div *ngIf="submitted && getControl('gender') && getControl('gender').errors && getControl('gender').hasError('required')">
+        <p class="error">* Field is required</p>
+      </div>
+    </div>
+
+  </form>
+  <div class="padbottom20">
+    <button class="btn btn-primary" (click)="submit()" >Submit</button>
+  </div>
+</div>
